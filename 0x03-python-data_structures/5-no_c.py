@@ -1,5 +1,4 @@
 #!/usr/bin/python3
 def no_c(my_string):
-    new_string = my_string.replace('C', '', 2)
-    new_string = my_string.replace('c', '', 2)
+    new_string = my_string.translate({ord(i): None for i in 'cC'})
     return new_string
