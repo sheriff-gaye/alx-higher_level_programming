@@ -1,8 +1,6 @@
-#include <python3.10/./Python.h>
-// #include <listobject.h>
-#define Py_OBJECT_H
-#define Py_LISTOBJECT_H
-// #include <object.h>
+#include <python3.10/Python.h>
+#include <python3.10/listobject.h>
+#include <python3.10/object.h>
 #include <stdlib.h>
 
 void print_python_list_info(PyObject *p) {
