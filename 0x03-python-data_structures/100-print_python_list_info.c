@@ -1,46 +1,23 @@
-#include <python3.10/Python.h>
-#include <stdio.h>
+#include "python3.10/Python.h"
 
-/**
- * print_item_info - Display the information of items of a python list
- *
- * @prmItem: item of a python object
- * @prmItemIndex: item index
- */
-void print_item_info(PyObject *prmItem, int prmItemIndex)
-{
-	char *itemName;
-
-	itemName = (char *)Py_TYPE(prmItem)->tp_name;
-
-	printf("Element %d: %s\n", prmItemIndex, itemName);
-}	
-
-/**
- * print_python_list_info - display all item informations from one python
- *                          object
- *
- * @p: Python object
- */
 void print_python_list_info(PyObject *p)
 {
-	int itemIndex, objAllocatedNb = 0;
-	PyObject *item;
-	Py_ssize_t objListSize = 0;
+  PyListObject *list;
+  Py_ssize_t size, i;
+  PyObject *object;
+  struct _typeobject *type;
 
-	/* Check if item list is not empty */
-	if (PyList_Check(p))
+  if (strcmp(p->ob_type->tp_name, "list") == 0)
+    {
+      list = (PyListObject *)p;
+      size = list->ob_base.ob_size;
+      printf("[*] Size of the Python List = %ld\n", size);
+      printf("[*] Allocated = %ld\n", list->allocated);
+      for (i = 0; i < size; i++)
 	{
-		objListSize = PyList_Size(p);
-		objAllocatedNb = ((PyListObject *)p)->allocated;
-
-		printf("[*] Size of the Python List = %d\n", (int) objListSize);
-		printf("[*] Allocated = %d\n", objAllocatedNb);
-
-		for (itemIndex = 0; itemIndex < objListSize; itemIndex++)
-		{
-			item = PyList_GetItem(p, itemIndex);
-			print_item_info(item, itemIndex);
-		}
+	  object = list->ob_item[i];
+	  type = object->ob_type;
+	  printf("Element %ld: %s\n", i, type->tp_name);
 	}
+    }
 }
