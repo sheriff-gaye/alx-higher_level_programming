@@ -5,7 +5,6 @@
 // #include <object.h>
 #include <stdlib.h>
 
-
 void print_python_list_info(PyObject *p) {
   long int size = PyList_Size(p);
   int i;
