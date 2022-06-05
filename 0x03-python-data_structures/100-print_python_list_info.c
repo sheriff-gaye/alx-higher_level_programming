@@ -1,6 +1,8 @@
 #include <python3.10/./Python.h>
-#include <listobject.h>
-#include <object.h>
+// #include <listobject.h>
+#define Py_OBJECT_H
+#define Py_LISTOBJECT_H
+// #include <object.h>
 #include <stdlib.h>
 
 
