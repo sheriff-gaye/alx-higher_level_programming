@@ -1,7 +1,4 @@
 #!/usr/bin/python3
-from ast import Index
-
-
 def list_division(my_list_1, my_list_2, list_length):
     new_list = []
     for i in range(0, list_length):
@@ -19,3 +16,4 @@ def list_division(my_list_1, my_list_2, list_length):
         finally:
             new_list.append(div)
     return new_list
+
