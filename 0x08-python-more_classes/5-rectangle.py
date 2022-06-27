@@ -73,3 +73,4 @@ class Rectangle:
         """Print a message for every deletion of a Rectangle."""
         print("Bye rectangle...")
 
+
